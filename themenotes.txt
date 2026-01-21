@@ -1,0 +1,84 @@
+ You can have it be a simple one-line script.
+
+
+Let's say you have:
+
+
+# ~/.config/hypr/themes/dark.hl
+
+general {
+
+  col.active_border = 0xffffffff
+
+}
+
+
+and
+
+
+# ~/.config/hypr/themes/light.hl
+
+general {
+
+  col.active_border = 0xff000000
+
+}
+
+
+Then you can switch between them with
+
+
+ls -1 ~/.config/hypr/themes/ | fzf --bind 'enter:become:hyprctl keyword source ~/.config/hypr/themes/{}'
+
+You can replace fzf with your favorite GUI picker. I use walker. I guess rofi is the most popular one.
+
+=========================================
+HYPRLAND BLUR PRESETS REFERENCE
+=========================================
+
+1. GLASSMORPHISM (0.85) - MacOS feel 
+-----------------------------------------------
+blur {
+    enabled = true
+    size = 8
+    passes = 3
+    new_optimizations = true
+    vibrancy = 0.2
+    vibrancy_darkness = 0.1
+}
+
+2. PERFORMANCE LITE (O.93 - 0.97) - Speed
+-----------------------------------------------
+blur {
+    enabled = true
+    size = 3
+    passes = 1
+    new_optimizations = true
+    brightness = 1.0
+    contrast = 1.0
+}
+
+3. DEEP FROST (0.7) - Frosty
+-----------------------------------------------
+blur {
+    enabled = true
+    size = 10
+    passes = 4
+    new_optimizations = true
+    ignore_opacity = true
+    xray = true
+}
+
+4. VIBRANT NEON (0.90 - 0.88) - Wallpapers Pop
+-----------------------------------------------
+blur {
+    enabled = true
+    size = 5
+    passes = 3
+    new_optimizations = true
+    vibrancy = 0.6
+    vibrancy_darkness = 0.2
+    noise = 0.02
+}
+
+
