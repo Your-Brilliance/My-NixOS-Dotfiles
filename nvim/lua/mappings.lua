@@ -1,34 +1,49 @@
-require "nvchad.mappings"
-
 local map = vim.keymap.set
 
+-- Basic NvChad UI
 map("n", ";", ":", { desc = "CMD enter command mode" })
-map("i", "jk", "<ESC>")
-
 map("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
--- increment/decrement numbers
-map("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
-map("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
+-- Window management
+map("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })
+map("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })
+map("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" })
 
--- window management
-map("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
-map("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
-map("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
-map("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
-map("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- open new tab
-map("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- close current tab
-map("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
-map("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
-map("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
-map("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
-map("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
-map("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
-map("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
+-- NvimTree
+map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
 
-map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
-map("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
-map("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
-map("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
-map("n", "<leader>wr", "<cmd>AutoSession restore<CR>", { desc = "Restore session for cwd" }) -- restore last workspace session for current directory
-map("n", "<leader>ws", "<cmd>AutoSession save<CR>", { desc = "Save session for auto session root dir" }) -- save workspace session for current working directory
+-- Telescope
+map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files" })
+map("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string" })
+
+-- Molten Mappings (Using 'm' for Molten)
+-- 1. INITIALIZE
+map("n", "<leader>mi", ":MoltenInit<CR>", { desc = "Init Molten" })
+
+-- 2. RUN CODE
+map("n", "<leader>mr", ":MoltenReevaluateCell<CR>", { desc = "Molten Run Cell" })
+map("v", "<leader>mr", ":<C-u>MoltenEvaluateVisual<CR>gv", { desc = "Molten Run Visual" })
+
+-- 3. MANAGE OUTPUT (The <C-u> prevents the 'No range found' error)
+map({ "n", "v" }, "<leader>mh", ":<C-u>MoltenHideOutput<CR>gv", { desc = "Molten Hide Output" })
+map({ "n", "v" }, "<leader>md", ":<C-u>MoltenDelete<CR>gv", { desc = "Molten Delete Output" })
+map({ "n", "v" }, "<leader>mo", ":<C-u>noautocmd MoltenEnterOutput<CR>", { desc = "Molten Show/Enter Output" })
+
+-- 4. EMERGENCY IMAGE CLEAR
+map({ "n", "v" }, "<leader>mc", function()
+  require("image").clear()
+end, { desc = "Molten Hard Clear Images" })
+
+-- Auto-Session shit
+map("n", "<leader>ws", "<cmd>AutoSession save<cr>", { desc = "Save session for current directory" })
+map("n", "<leader>wr", "<cmd>AutoSession restore<cr>", { desc = "Restore session for current directory" })
+
+-- Search through all your saved sessions (Telescope integration)
+map("n", "<leader>wl", "<cmd>SessionSearch<cr>", { desc = "Search through all sessions" })
+
+-- Notification Management
+map("n", "<leader>nd", function()
+  require("noice").cmd("dismiss")
+end, { desc = "Dismiss all notifications" })
+
+

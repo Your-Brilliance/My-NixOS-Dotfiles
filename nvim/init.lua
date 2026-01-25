@@ -29,17 +29,18 @@ require("lazy").setup({
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
+-- 1. LOAD OPTIONS AND AUTOCOMMANDS
 require "options"
 require "autocmds"
 
+-- 2. LOAD MAPPINGS IMMEDIATELY (No schedule)
+require "mappings"
+
+-- 3. SCHEDULE ONLY UI/HIGHLIGHT UPDATES
 vim.schedule(function()
-  require "mappings"
+  vim.cmd('highlight Normal guibg=NONE')
+  vim.cmd('highlight NormalFloat guibg=NONE')
+  vim.cmd('highlight NvimTreeNormal guibg=NONE')
+  vim.cmd('highlight StatusLine guibg=NONE')
+  vim.cmd('highlight LineNr guibg=NONE')
 end)
-
-vim.cmd('highlight Normal guibg=NONE')
-vim.cmd('highlight NormalFloat guibg=NONE')
-vim.cmd('highlight NvimTreeNormal guibg=NONE')
-vim.cmd('highlight StatusLine guibg=NONE')
-vim.cmd('highlight LineNr guibg=NONE')
-
-

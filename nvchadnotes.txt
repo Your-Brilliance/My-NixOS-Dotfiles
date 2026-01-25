@@ -1,0 +1,19 @@
+lua
+
+require("plugin_name").setup({
+  feature_enabled = true,
+  theme = "dark",
+})
+
+Use code with caution.
+You translate it to an NvChad-friendly spec in lua/plugins/myplugin.lua like this:
+lua
+
+return {
+  "author/plugin_name",
+  opts = {
+    feature_enabled = true,
+    theme = "dark",
+  },
+}
+

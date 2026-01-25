@@ -2,6 +2,12 @@ return {
   defaults = { lazy = true },
   install = { colorscheme = { "nvchad" } },
 
+  -- Stuff for molten.nvim
+  rocks = {
+    enabled = false,
+    hererocks = false,
+  },
+
   ui = {
     icons = {
       ft = "",
@@ -36,13 +42,13 @@ return {
         "zip",
         "zipPlugin",
         "tutor",
-        "rplugin",
+       -- "rplugin",
         "syntax",
         "synmenu",
         "optwin",
         "compiler",
         "bugreport",
-        "ftplugin",
+       -- "ftplugin",
       },
     },
   },
