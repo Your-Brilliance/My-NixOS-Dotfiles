@@ -1,0 +1,21 @@
+[1;32mDEBUG [0m]: Welcome to hyprpaper!
+built from commit v0.8.4 ()
+[1;31mERR [0m]: Failed to resolve path /home/karanxs/Downloads/Wallpapers/space-umbra.png: invalid path: No such file or directory
+[1;32mDEBUG [0m]: Found 1 output(s)
+[1;32mDEBUG [0m]: Monitor eDP-1 has no target: no wp will be created
+[1;32mDEBUG [0m]: Welcome to hyprpaper!
+built from commit v0.8.4 ()
+[1;32mDEBUG [0m]: Found 1 output(s)
+
+==========================================================================================
+ASSERTION FAILED! 
+
+[core] Disconnected from pollfd id 0
+
+at: line 367 in Backend.cpp[HT] Assertion failed!
+==========================================================================================
+ASSERTION FAILED! 
+
+[core] Disconnected from pollfd id 0
+
+at: line 367 in Backend.cpp[HT] Assertion failed!

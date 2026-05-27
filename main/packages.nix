@@ -13,6 +13,7 @@
     superfile joshuto wl-clipboard wl-clip-persist kitty foot alacritty
     waybar hyprpaper hypridle hyprlock hyprshot hyprpicker swayosd avizo rofi fuzzel
     wlogout pywal ripgrep fd quickshell bat fastfetch cava kdePackages.dolphin thunar
+    home-manager
  
     # --- Applications ---
     vivaldi inputs.zen-browser.packages.x86_64-linux.default fzf zoom-us

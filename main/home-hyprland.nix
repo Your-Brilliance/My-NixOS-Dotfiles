@@ -151,19 +151,25 @@
   home.stateVersion = "25.11"; 
 
   home.file = {
-    ".config/waybar".source = ../waybar;
-    ".config/rofi".source = ../rofi;
-    ".config/foot".source = ../foot;
-    ".config/hypr".source = ../hypr;
-    #".config/yazi".source = ../yazi;
-    #".config/wlogout".source = ../wlogout;
-    ".config/wal/templates".source = ../wal/templates;
+    ".config/waybar".source = 
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/waybar";
+    ".config/rofi".source = 
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/rofi";
+    ".config/foot".source = 
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/foot";
+    ".config/hypr".source = 
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/hypr";
+    #".config/yazi".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/yazi;
+    #".config/wlogout".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/wlogout;
+    ".config/wal/templates".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/wal/templates";
     ".config/nvim" = {
       source = ../nvim;
-      recursive = true; 
+      recursive = true;
     };
-    "~/Downloads/Wallpapers".source = ../Wallpapers;
+    "Downloads/Wallpapers".source = 
+      config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/Wallpapers";
   }; 
-  
+
   programs.home-manager.enable = true;
 }
