@@ -1,0 +1,109 @@
+/* 1. FLOATING OVERLAY & PAGE MARGIN */
+#main > .inner > div:has(#tabs-tabbar-container:is(.left, .right)) {
+    position: absolute !important;
+    z-index: 10 !important;
+    height: 100% !important;
+    background-color: var(--colorBg) !important;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.3) !important;
+}
+
+#main .inner #webpage-stack {
+    margin-left: 36px !important; 
+}
+
+/* 2. INSTANT LIGHT-UP EFFECT */
+.tab:hover {
+    background-color: rgba(255, 255, 255, 0.25) !important;
+    filter: brightness(1.4) !important; 
+    transition: none !important; 
+}
+
+/* 3. STABLE ICON & WORKSPACE FIX (Anti-Jiggle) */
+.tab-header, .button-workspace {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    padding: 0 !important;
+    overflow: visible !important;
+}
+
+/* Force Workspace icon and Tab icons to use the exact same 36px footprint */
+.favicon-container, 
+.button-workspace > .button-icon {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 36px !important; 
+    min-width: 36px !important;
+    flex: 0 0 36px !important; 
+    margin: 0 !important;
+}
+
+.tab-header .title, .button-workspace .button-title {
+    font-size: 14px !important;
+    margin-left: 4px !important;
+    white-space: nowrap !important;
+    transition: opacity 0.15s ease-in-out !important; 
+}
+
+/* 4. SMOOTH 0.2s EXPANSION LOGIC */
+#tabs-tabbar-container:is(.left, .right):not(:hover) {
+    width: 36px !important; 
+    transition: width 0.2s ease-in-out !important; /* Slowed down to 0.2s */
+}
+
+#tabs-tabbar-container:is(.left, .right):hover {
+    width: 250px !important; 
+    transition: width 0.2s ease-in-out !important; /* Slowed down to 0.2s */
+}
+
+/* Hide titles smoothly */
+#tabs-tabbar-container:not(:hover) .title,
+#tabs-tabbar-container:not(:hover) .button-title {
+    opacity: 0 !important;
+    pointer-events: none !important;
+}
+
+#tabs-tabbar-container:hover .title,
+#tabs-tabbar-container:hover .button-title {
+    opacity: 1 !important;
+}
+
+/* 5. WORKSPACE HOVER HIGHLIGHTING */
+.button-workspace:hover {
+    background-color: rgba(255, 255, 255, 0.25) !important;
+    filter: brightness(1.4) !important; 
+    transition: none !important; 
+    cursor: pointer;
+}
+
+/* Ensure active workspace also stands out slightly more if needed */
+.button-workspace.active {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-left: 2px solid var(--colorAccentBg) !important;
+}
+
+/* 5. INDIVIDUAL WORKSPACE ITEM HOVER (Zen-style) */
+
+/* Targets the individual workspace rows in the list */
+.workspace-item:hover,
+.workspace-item-wrapper:hover {
+    background-color: rgba(255, 255, 255, 0.25) !important;
+    filter: brightness(1.4) !important;
+    transition: none !important;
+    cursor: pointer;
+}
+
+/* Ensure the text and icons inside also react */
+.workspace-item:hover .button-title,
+.workspace-item:hover .workspace-icon {
+    color: #fff !important;
+}
+
+/* Active Workspace (The one you're currently in) */
+.workspace-item.active {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    border-left: 3px solid var(--colorAccentBg) !important;
+}
+
+

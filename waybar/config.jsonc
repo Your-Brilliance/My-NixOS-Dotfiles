@@ -60,7 +60,7 @@
   "temperature": {
     "critical-threshold": 80,
     "interval": 2,
-    "format": " {temperatureC:>2}°C",
+    "format": " {temperatureF:>2}°F",
     "format-icons": ["", "", ""],
   },
 

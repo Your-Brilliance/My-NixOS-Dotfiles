@@ -16,6 +16,10 @@ M.ui = {
   statusline = {
     theme = "default", 
   },
+
+  lsp = {
+    signature = false, 
+  },
   
   tabufline = {
     lazyload = false,

@@ -1,4 +1,22 @@
+vim.api.nvim_create_autocmd("User", {
+  pattern = "NvChadThemeReload", 
+  callback = function()
+    pcall(vim.api.nvim_del_augroup_by_name, "LspSignature")
+  end,
+})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    pcall(vim.api.nvim_del_augroup_by_name, "LspSignature")
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client then
+      client.server_capabilities.signatureHelpProvider = false
+    end
+  end,
+})
+
 return {
+
   {
     "stevearc/conform.nvim",
     -- event = 'BufWritePre', -- uncomment for format on save
@@ -8,7 +26,6 @@ return {
   "nvim-lua/plenary.nvim", -- lua functions that many plugins use
   "christoomey/vim-tmux-navigator", -- tmux & split window navigation
 
-  -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -18,24 +35,24 @@ return {
 
   {
     "hrsh7th/nvim-cmp",
-    opts = function(_, opts)
-      opts.completion = {
-        -- This overrides the default 'true' setting in NvChad
-        autocomplete = false,
-      }
-    end,
+    enabled = false,
   },
-   
-  --{ import = "nvchad.blink.lazyspec" },
 
- 
   {
- 	  "nvim-treesitter/nvim-treesitter",
- 	  opts = {
- 		ensure_installed = {
- 			"vim", "lua", "vimdoc",
-      "html", "css"
-   		},
-   	},
-   },
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim", "lua", "vimdoc",
+        "html", "css", "cpp", 
+        "python", "rust", "ocaml", 
+        "haskell", "java"
+      },
+      auto_install = false,
+      sync_install = false,
+      indent = { 
+        enable = true,
+      }, 
+    },
+  },
 }
+

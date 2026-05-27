@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 local lazy_config = require "configs.lazy"
 
+vim.cmd("filetype indent on")
 -- load plugins
 require("lazy").setup({
   {
@@ -21,7 +22,6 @@ require("lazy").setup({
     branch = "v2.5",
     import = "nvchad.plugins",
   },
-
   { import = "plugins" },
 }, lazy_config)
 
@@ -33,14 +33,6 @@ dofile(vim.g.base46_cache .. "statusline")
 require "options"
 require "autocmds"
 
--- 2. LOAD MAPPINGS IMMEDIATELY (No schedule)
+-- 2. LOAD MAPPINGS IMMEDIATELY 
 require "mappings"
 
--- 3. SCHEDULE ONLY UI/HIGHLIGHT UPDATES
-vim.schedule(function()
-  vim.cmd('highlight Normal guibg=NONE')
-  vim.cmd('highlight NormalFloat guibg=NONE')
-  vim.cmd('highlight NvimTreeNormal guibg=NONE')
-  vim.cmd('highlight StatusLine guibg=NONE')
-  vim.cmd('highlight LineNr guibg=NONE')
-end)

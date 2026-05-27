@@ -6,8 +6,6 @@ return {
     {
       "rcarriga/nvim-notify",
       opts = {
-        -- This stops the error. Since your terminal is transparent, 
-        -- Noice will still respect your terminal's transparency.
         background_colour = "#000000", 
         timeout = 1000,
         render = "default", 
@@ -16,7 +14,7 @@ return {
   },
   opts = {
     lsp = {
-      progress = { enabled = false }, -- Hides the "loading lua_ls" bar
+      progress = { enabled = false }, -- Already hides the loading bars
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
         ["vim.lsp.util.stylize_markdown"] = true,
@@ -24,11 +22,33 @@ return {
       },
     },
     routes = {
-      { -- This block silences the lua_ls and NotifyBackground popups
+      --- Nuclear Option: Silence ALL LSP messages (Info, Warning, etc.)
+      {
+        filter = {
+          event = "lsp",
+          kind = "message",
+        },
+        opts = { skip = true },
+      },
+      --- Silence common "written" and "search" messages
+      {
+        filter = {
+          event = "msg_show",
+          any = {
+            { find = "written" },
+            { find = "search hit" },
+            { find = "change" },
+          },
+        },
+        opts = { skip = true },
+      },
+      --- Silence the "NotifyBackground" error and specific lua_ls noise
+      {
         filter = {
           any = {
             { find = "lua_ls" },
             { find = "NotifyBackground" },
+            { find = "No signature help available" },
           },
         },
         opts = { skip = true },
@@ -36,11 +56,10 @@ return {
     },
     presets = {
       bottom_search = false,
-      command_palette = true, -- Keeps your "rectangle" cmdline
+      command_palette = true, 
       long_message_to_split = true,
       inc_rename = false,
       lsp_doc_border = true,
     },
   },
 }
-

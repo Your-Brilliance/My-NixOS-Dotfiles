@@ -11,6 +11,15 @@ vim.api.nvim_create_user_command('Ff', function()
     vim.cmd('silent !firefox % &')
 end, {})
 
+vim.api.nvim_create_user_command('Zn', function()
+    vim.cmd('silent !zen % &')
+end, {})
+
+-- Open in Vivaldi
+vim.api.nvim_create_user_command('Vv', function()
+    vim.cmd('silent !vivaldi % &')
+end, {})
+
 -- Python Provider Settings
 vim.g.loaded_python3_provider = nil
 vim.cmd("runtime! autoload/provider/python3.vim")
@@ -25,3 +34,4 @@ vim.filetype.add({
     qmd = "quarto",
   },
 })
+
