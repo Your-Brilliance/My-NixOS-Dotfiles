@@ -1,4 +1,4 @@
-* {
+* { //comment to test git
     font: "Figtree 13";
     g-spacing: 10px;
     g-margin: 0;
