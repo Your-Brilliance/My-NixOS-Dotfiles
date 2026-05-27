@@ -162,6 +162,7 @@
       source = ../nvim;
       recursive = true; 
     };
+    "~/Downloads/Wallpapers".source = ../Wallpapers;
   }; 
   
   programs.home-manager.enable = true;
