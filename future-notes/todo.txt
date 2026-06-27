@@ -1,0 +1,8 @@
+Write a derivation for fightcade!!! It's currently not declared nor reproducible!!!
+Write a derivation for MBACC community edition
+Make a new Waybar
+Reconfig nvim from scratch 
+QuickShell?
+Wlogout
+Notification Daemon
+

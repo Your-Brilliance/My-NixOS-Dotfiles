@@ -7,18 +7,32 @@
       ./bashrc.nix
     ];
 
+  services.flatpak.enable = true;
+ 
+ environment.sessionVariables = {
+    XDG_DATA_DIRS = [
+      "$XDG_DATA_DIRS"
+      "$HOME/.local/share/flatpak/exports/share"
+      "/var/lib/flatpak/exports/share"
+    ];
+  };
 
   #For my speakers
   hardware.enableAllFirmware = true;
+  hardware.enableRedistributableFirmware = true;
 
   #Brightness Control
   hardware.brillo.enable = true;
+
+  programs.nix-ld.enable = true;
   
   environment.variables = {
     GTK_USE_PORTAL = "1";
     MOZ_ENABLE_WAYLAND = "1";       
     NIXOS_OZONE_HWACCEL = "1";  
     STEAM_FORCE_DESKTOPUI_SCALING = "1.5";
+    LIBVA_DRIVER_NAME = "iHD";
+    VDPAU_DRIVER = "va_gl";
   };
   
   programs.appimage = {
@@ -73,6 +87,11 @@
     extraPackages = with pkgs; [
       intel-media-driver
       vpl-gpu-rt
+      libvdpau-va-gl
+    ];
+    extraPackages32 = with pkgs.pkgsi686Linux; [
+      intel-media-driver
+      libvdpau-va-gl
     ];
   };
 
@@ -93,7 +112,7 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   #For my speakers
-  boot.kernelParams = [ "snd_intel_dspcfg.dsp_driver=3" ];
+  boot.kernelParams = [ "snd_intel_dspcfg.dsp_driver=3" "i915.enable_guc=3" ];
 
   networking.hostName = "Karan-Laptop"; 
 
@@ -285,6 +304,7 @@
       };
     };
   };
+
   system.stateVersion = "25.05"; 
 
   environment.etc."current-nixos".source = ./.;

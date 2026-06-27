@@ -45,7 +45,7 @@ return {
         "vim", "lua", "vimdoc",
         "html", "css", "cpp", 
         "python", "rust", "ocaml", 
-        "haskell", "java"
+        "haskell", "java", "xml"
       },
       auto_install = false,
       sync_install = false,

@@ -13,13 +13,22 @@
     superfile joshuto wl-clipboard wl-clip-persist kitty foot alacritty
     waybar hyprpaper hypridle hyprlock hyprshot hyprpicker swayosd avizo rofi fuzzel
     wlogout pywal ripgrep fd quickshell bat fastfetch cava kdePackages.dolphin thunar
-    home-manager
+    home-manager 
  
     # --- Applications ---
-    vivaldi inputs.zen-browser.packages.x86_64-linux.default fzf zoom-us
+    (pkgs.vivaldi.override {
+      commandLineArgs = [
+        "--ozone-platform=wayland"
+        "--ignore-gpu-blocklist"
+        "--enable-gpu-rasterization"
+        "--enable-zero-copy"
+      ];
+    })
+
+    inputs.zen-browser.packages.x86_64-linux.default fzf zoom-us
     btop htop powertop unimatrix tmatrix cmatrix zip unzip eza feh mpv
     pavucontrol pulsemixer onlyoffice-desktopeditors kooha pomodoro-gtk
-    anki thokr ttyper smassh mangohud protonup-qt
+    anki thokr ttyper smassh mangohud protonup-qt gparted
 
     # --- Development & Languages ---
     gcc gnumake nodejs prettier ghc cabal-install jdk21
@@ -32,6 +41,13 @@
     texlive.combined.scheme-full xdotool texlab neovim-remote
 
     # --- Games ---
-    gnuchess gnushogi chess-tui uchess gambit-chess
+    gnuchess gnushogi chess-tui uchess gambit-chess wine64 
+    
+    (heroic.override {
+      extraPkgs = pkgs': with pkgs'; [
+        gamescope
+        gamemode
+      ];
+    })
   ];
 }
