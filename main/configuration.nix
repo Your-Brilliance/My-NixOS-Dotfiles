@@ -257,7 +257,7 @@
 
     # System Essentials
     pciutils
-    usbutils
+      usbutils
     powertop
 
     #CS460
@@ -267,6 +267,15 @@
     (networkmanager-openconnect.override { withGnome = true; })
     polkit_gnome
     sqlitebrowser
+
+    (rstudioWrapper.override {
+      packages = with rPackages; [ 
+        ggplot2 
+        dplyr 
+        xts 
+        tidyverse 
+      ];
+    })
   ];
 
   nix.gc = {
