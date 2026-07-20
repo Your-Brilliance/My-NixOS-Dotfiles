@@ -13,7 +13,7 @@
     superfile joshuto wl-clipboard wl-clip-persist kitty foot alacritty
     waybar hyprpaper hypridle hyprlock hyprshot hyprpicker swayosd avizo rofi fuzzel
     wlogout pywal ripgrep fd quickshell bat fastfetch cava kdePackages.dolphin thunar
-    home-manager 
+    home-manager kdePackages.kdenlive
  
     # --- Applications ---
     (pkgs.vivaldi.override {
@@ -28,7 +28,7 @@
     inputs.zen-browser.packages.x86_64-linux.default fzf zoom-us
     btop htop powertop unimatrix tmatrix cmatrix zip unzip eza feh mpv
     pavucontrol pulsemixer onlyoffice-desktopeditors kooha pomodoro-gtk
-    anki thokr ttyper smassh mangohud protonup-qt gparted
+    anki thokr ttyper smassh mangohud protonup-qt gparted discord
 
     # --- Development & Languages ---
     gcc gnumake nodejs prettier ghc cabal-install jdk21
