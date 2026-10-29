@@ -13,8 +13,7 @@
     superfile joshuto wl-clipboard wl-clip-persist kitty foot alacritty
     waybar hyprpaper hypridle hyprlock hyprshot hyprpicker swayosd avizo rofi fuzzel
     wlogout pywal ripgrep fd quickshell bat fastfetch cava kdePackages.dolphin thunar
-    home-manager kdePackages.kdenlive cheese
- 
+    home-manager kdePackages.kdenlive cheese discord-ptb obs-studio brightnessctl hyprsunset
     # --- Applications ---
     (pkgs.vivaldi.override {
       commandLineArgs = [
